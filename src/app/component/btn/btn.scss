@@ -1,0 +1,31 @@
+@use "sass:color";
+
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-bg-input);
+    background-color: var(--color-btn);
+    width: 100%;
+    padding: 6px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 12px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover{
+        background-color: var(--color-btn-hover);
+    }
+    &:active{
+        background-color: var(--color-btn);
+    }
+
+    img{
+        width: auto;
+        height: 20px;
+        display: flex;
+    }
+}

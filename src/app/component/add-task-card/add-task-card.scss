@@ -1,0 +1,16 @@
+form {
+    margin: 20px 0;
+    div {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    label {
+        color: var(--color-text-primary);
+        font-weight: 600;
+        width: auto;
+        text-align: left;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,7 @@
+<button>
+    @if (icon()) {
+        <img [src]="icon() + '.svg'">
+    }
+
+    <span>{{label()}}</span>
+</button>

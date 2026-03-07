@@ -1,0 +1,38 @@
+@mixin flex-layout($direction, $justify, $align, $flex-gap) {
+    display: flex;
+    align-items: center;
+    justify-content: $justify;
+    flex-direction: $direction;
+    align-items: $align;
+    gap: $flex-gap;
+
+}
+
+:host {
+    @include flex-layout(column, center, center, 40px );
+    margin-top: 40px
+}
+
+.title{
+    @include flex-layout(row, center, center, 8px);
+    // gap: 8px;
+    h1{
+        color: var(--color-text-primary);
+        font-size: 30px;
+    }
+
+    img {
+
+            height: 35px;
+            width: auto;
+            border-radius: 4px;
+        }
+}
+
+p {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 5px;
+    color: var(--color-text-secondary);
+}
+

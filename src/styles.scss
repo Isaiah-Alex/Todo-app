@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Great+Vibes&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+$bg-gradient: linear-gradient( 45deg, #eff6ff, #f9f5ff);
+$dark-bg-gradient: radial-gradient(circle, #111929 0%,#1e2939 60%,#121b2e  100%);
+
+$themes: (
+    "light": (
+        "text-primary": #111827,
+        "text-secondary": #6b7280,
+        "btn": #030213,
+        "btn-hover": #070521,
+        "bg-card": #ffffff,
+        "bg-input": #f3f3f5,
+        "border": #e8eaf0,
+        "danger": #ef4444,
+        "bg-main": $bg-gradient,
+    ),
+    "dark": (
+        "text-primary": #fafafa,
+        "text-secondary": #2b384a,
+        "btn": #fafafa,
+        "btn-hover": #e7e7e7,
+        "bg-card":#1e2939,
+        "bg-input": #101828,
+        "border": #242e40,
+        "danger": #f56a6a,
+        "bg-main": $dark-bg-gradient
+    )
+);
+
+@mixin createTheme($themes) {
+    @each $name, $variables in $themes {
+           &[data-theme='#{$name}'] {
+            @each $key, $value in $variables {
+                --color-#{$key}: #{$value};
+            }
+        }
+    }
+}
+
+body {
+    @include createTheme($themes);
+    background: var(--color-bg-main);
+    color: var(--color-text-primary);
+    height: 100vh;
+    font-family: "Inter", sans-serif;
+}
+ 
+
+// global styles
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}

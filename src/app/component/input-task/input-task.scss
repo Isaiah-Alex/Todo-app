@@ -1,0 +1,23 @@
+input {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--color-bg-input);
+    padding: 8px;
+    margin-top: 4px;
+    color: var(--color-text-primary);
+    outline: 2px solid var(--color-bg-input);
+
+    &:focus{
+        transition: outline 0.3s ease-in-out;
+        outline: 2px solid var(--color-text-primary);
+    }
+    &::placeholder{
+        color: var(--color-text-secondary);
+    }
+}
+
+.textarea-style {
+    padding-bottom: 50px;
+}

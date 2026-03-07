@@ -1,0 +1,29 @@
+
+section {
+    display: flex;
+    margin: 15px 0px;
+    text-align: left;
+    color: var(--color-text-secondary);
+
+    div {
+        h3 {
+                font-size: 18px;
+                color: var(--color-text-primary);
+            }
+
+        font-size: 14px;
+
+        .time {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 5px;
+        }
+
+        .description {
+            margin-top: 5px;
+        }
+    }
+
+    
+}

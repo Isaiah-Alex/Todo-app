@@ -1,0 +1,17 @@
+img {
+    height: 14px;
+    width: 14px;
+}
+
+.clickable-style {
+    padding: 5px;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+
+    &:hover {
+        background: var(--color-bg-input);
+    }
+
+}
