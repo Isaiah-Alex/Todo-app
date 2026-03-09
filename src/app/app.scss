@@ -19,6 +19,18 @@
 footer {
     font-weight: 400;
     color: var(--color-text-secondary);
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
 
     // background-color: red;
+}
+
+main {
+    min-height: 80vh;
+    position: relative;
+    padding-bottom: 40px;
+    
 }

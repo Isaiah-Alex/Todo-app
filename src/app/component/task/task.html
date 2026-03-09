@@ -1,14 +1,15 @@
 <app-card-wrapper>
-    <section>
+    <section (click)="closeTab($event)">
+        <span 
+        class="menutab" 
+        [class.toggle] = "isMenuDisplayed()"
+        (click) = "deleteTask($event)"
+        >Delete</span>
         <div>
-            <h3
-            [class.strike-through]="isCompleted()"
-            >
+            <h3 [class.strike-through]="isCompleted()">
                 {{title()}}
             </h3>
-            <p class="description"
-            [class.strike-through]="isCompleted()"
-            >
+            <p class="description" [class.strike-through]="isCompleted()">
                 {{description()}}
             </p>
             <div class="time">
@@ -18,9 +19,9 @@
         </div>
         <!-- <app-icon iconName="delete" 
         [isClickable]="true"></app-icon> -->
-        <input 
-        type="checkbox"
-        (change)="onCheck($event)"
-        >
+        <div class="checkbox-div">
+            <input type="checkbox" [checked]="isCompleted()" (change)="onCheck($event)">
+        </div>
+        <div class="tab" (click)="onClick($event)">...</div>
     </section>
 </app-card-wrapper>

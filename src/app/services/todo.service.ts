@@ -1,7 +1,5 @@
-import { computed, Injectable, input, signal } from "@angular/core";
+import { computed, Injectable, signal } from "@angular/core";
 import { Itodo } from "../types/todo.types";
-import { MOCK_TODOS } from "../constants/mock-data";
-
 
 const STORAGE_KEY = 'todos';
 
@@ -14,18 +12,18 @@ export class TodoService {
     filterTodos = computed(() => {
         return this.todos().filter(todo => todo.title.toLowerCase().includes(this.searchQuery().toLowerCase()));
     })
-    
+
     sortedTodos = computed(() => {
         return this.filterTodos().slice().sort((a, b) => {
-            return Number(a.isCompleted) - Number(b.isCompleted);
-    });
+            return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+        });
     });
 
     addTodo(title: string, description: string) {
         this.todos.update(todos => [
             ...todos,
             {
-                id: todos.length + 1,
+                id: Date.now(),
                 title,
                 description,
                 isCompleted: false,
@@ -35,22 +33,27 @@ export class TodoService {
         this.saveToStorage();
     }
 
+    deleteTodo(id: number) {
+        this.todos.update(todos => todos.filter(todo => todo.id !== id));
+        this.saveToStorage();
+    }
+
     toggle(id: number) {
         this.todos.update(todos => todos.map(todo =>
-            todo.id === id ? {
-                ...todo, isCompleted: !todo.isCompleted
-            } : todo
+            todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
         ));
         this.saveToStorage();
     }
 
     private loadFromStorage(): Itodo[] {
         const stored = localStorage.getItem(STORAGE_KEY);
-        return stored ? JSON.parse(stored) : [];
+        return stored ? JSON.parse(stored).map((todo: Itodo) => ({
+            ...todo,
+            timestamp: new Date(todo.timestamp),
+        })) : [];
     }
 
     private saveToStorage() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos()));
     }
 }
-

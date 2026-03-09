@@ -13,7 +13,16 @@
     </app-card-wrapper>
     <app-search-input />
     <section class="tasks">
-        <p>{{todos().length > 1 ? (sortedTodo().length + " tasks") : (sortedTodo().length + " tasks") }}</p>
+
+        @if (sortedTodo().length === 1) {
+            <p>1 task</p>
+        } @else if (sortedTodo().length > 1 ) {
+            <p>{{sortedTodo().length }} tasks found</p>
+        } @else {
+            <p class="last-task-title">No task found</p>
+        }
+
+
         @for (todo of filteredTodos(); track todo.id) {
             <app-task
             [title]="todo.title"
@@ -25,5 +34,5 @@
          }
     </section>
     
+    <footer>Isaiah Alex world 2026</footer>
 </main>
-<footer>Isaiah Alex world &copy; 2026</footer>
