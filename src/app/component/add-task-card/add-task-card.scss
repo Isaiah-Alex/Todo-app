@@ -4,6 +4,7 @@ form {
         display: flex;
         flex-direction: column;
         margin-top: 10px;
+        transition: all 0.2s ease-in-out;
     }
 
     label {
@@ -12,5 +13,16 @@ form {
         width: auto;
         text-align: left;
         font-size: 12px;
+    }
+    span {
+        text-align: left;
+        font-size: 12px;
+        margin-top: 2px;
+        display: none;
+    }
+
+    .red-style{
+        display: block;
+        color: var(--color-danger);
     }
 }

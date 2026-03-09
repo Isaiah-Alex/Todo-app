@@ -1,16 +1,29 @@
 <app-hero/>
 <main>
+    <app-icon
+        [iconName]="isDark() ? 'light' : 'moon' "
+        [isClickable]="true"
+        class="icon"
+        (click) = "changeTheme()"
+        />
+
+
     <app-card-wrapper>
         <app-add-task-card />
     </app-card-wrapper>
     <app-search-input />
     <section class="tasks">
-        <p>1 task</p>
-        <app-task></app-task>
-        <app-task></app-task>
-        <app-task></app-task>
-        <app-task></app-task>
-        <app-task></app-task> 
+        <p>{{todos().length > 1 ? (sortedTodo().length + " tasks") : (sortedTodo().length + " tasks") }}</p>
+        @for (todo of filteredTodos(); track todo.id) {
+            <app-task
+            [title]="todo.title"
+            [description]="todo.description"
+            [id]="todo.id"
+            [isCompleted]="todo.isCompleted"
+            [timestamp]="todo.timestamp"
+            /> 
+         }
     </section>
     
 </main>
+<footer>Isaiah Alex world &copy; 2026</footer>

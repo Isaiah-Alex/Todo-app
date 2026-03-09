@@ -1,11 +1,24 @@
 <form>
     <div>
         <label for="task-name">Task Name</label>
-        <app-input-task inputId="tag-name" inputType="text" placeholder="Enter task name..."></app-input-task>
+        <app-input-task
+        inputId="tag-name"
+        inputType="text"
+        placeholder="Enter task name..."
+        (value)="taskTitle.set($event)"
+        [isFormCleared]="clearForm()"
+        />
+        <span [class.red-style] = "displayText()">Please enter task name</span>
     </div>
     <div class="text-area">
         <label for="description">Description</label>
-        <app-input-task inputId="description" inputType="textarea" placeholder="Enter task description..."></app-input-task>
+        <app-input-task
+        inputId="description"
+        inputType="textarea"
+        placeholder="Enter task description..."
+        (value)="taskDescription.set($event)"
+        [isFormCleared]="clearForm()"
+        />
     </div>
-    <app-btn icon="add" label="Add Task"></app-btn>
+    <app-btn icon="add" label="Add Task" (click)="addTask($event)"/>
 </form>

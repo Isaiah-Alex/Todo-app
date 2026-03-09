@@ -1,14 +1,40 @@
+@mixin strike(){
+    
+}
+
 
 section {
     display: flex;
     margin: 15px 0px;
     text-align: left;
     color: var(--color-text-secondary);
+    align-items: center;
+    justify-content: space-between;
+
+
 
     div {
         h3 {
-                font-size: 18px;
-                color: var(--color-text-primary);
+            font-size: 18px;
+            color: var(--color-text-primary);
+            position: relative;
+            // background-color: red;
+            width: fit-content;
+
+            &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    width: 0; // starts with no line
+                    height: 1px;
+                    background: var(--color-text-secondary);
+                    transition: width 0.3s ease;
+                }
+            &.strike-through::after {
+                    width: 100%;
+                    padding-left: 6px;
+                }
             }
 
         font-size: 14px;
@@ -22,7 +48,60 @@ section {
 
         .description {
             margin-top: 5px;
+
+            position: relative;
+            width: fit-content;
+
+                &::after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        width: 0; // starts with no line
+                        height: 1px;
+                        background: var(--color-text-secondary);
+                        transition: width 0.3s ease;
+                    }
+                
+                    &.strike-through::after {
+                        width: 100%;
+                        // padding-left: 6px;
+                    }
         }
+    }
+
+    input[type= "checkbox"] {
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        background-color: var(--color-bg-card);
+        border: 2px solid var(--color-text-primary);
+        cursor: pointer;
+        border-radius: 2px;
+
+
+        &:checked {
+            background: var(--color-text-secondary);
+            border: 2px solid var(--color-text-secondary);
+        }
+        &:checked::after {
+            content: "✓";
+            color: var(--color-bg-card);
+            display: block;
+            text-align: center;
+            font-size: 12px;
+            line-height: 14px;
+        }
+
+        &:focus {
+            outline: 2px solid var(--color-text-secondary);
+            outline-offset: 2px;
+        }
+    }
+    .strike-through {
+        // text-decoration: line-through !important;
+        color: var(--color-text-secondary) !important;
+        // transition: all 0.3s ease-in-out;
     }
 
     

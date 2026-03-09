@@ -1,6 +1,10 @@
 <app-card-wrapper>
     <div>
         <app-icon iconName="search"/>
-        <input type="text" placeholder="Search tasks...">
+        <input 
+        type="text"
+        placeholder="Search tasks..."
+        (input) = "onSearch($event)"
+        >
     </div>
 </app-card-wrapper>

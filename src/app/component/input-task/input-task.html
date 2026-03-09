@@ -1,5 +1,7 @@
 <input
     [type]="inputType()" 
     [placeholder]="placeholder()" 
-    [id]="inputId()" 
+    [id]="inputId()"
+    (input)="onInput($event)" 
+    #inputRef
     >

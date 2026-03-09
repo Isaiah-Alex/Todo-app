@@ -9,7 +9,7 @@ $themes: (
         "text-primary": #111827,
         "text-secondary": #6b7280,
         "btn": #030213,
-        "btn-hover": #070521,
+        "btn-hover": #191553,
         "bg-card": #ffffff,
         "bg-input": #f3f3f5,
         "border": #e8eaf0,
@@ -18,7 +18,7 @@ $themes: (
     ),
     "dark": (
         "text-primary": #fafafa,
-        "text-secondary": #2b384a,
+        "text-secondary": #7a899e,
         "btn": #fafafa,
         "btn-hover": #e7e7e7,
         "bg-card":#1e2939,
@@ -45,6 +45,7 @@ body {
     color: var(--color-text-primary);
     height: 100vh;
     font-family: "Inter", sans-serif;
+    transition: all 0.3s ease-in-out;
 }
  
 

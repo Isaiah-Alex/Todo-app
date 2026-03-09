@@ -1,5 +1,4 @@
-import { Component, computed, input } from '@angular/core';
-// import { NgClass } from "../../../../node_modules/@angular/common/types/_common_module-chunk";
+import { Component, computed, effect, ElementRef, input, output, viewChild } from '@angular/core';
 
 @Component({
   selector: 'app-input-task',
@@ -13,5 +12,26 @@ export class InputTask {
   placeholder = input<string>('Enter text...');
   placeholderIcon = input<string>();
   inputId = input<string>();
+  value = output<string>();
+  isFormCleared = input<boolean>(false);
+  inputRef = viewChild<ElementRef>('inputRef')
+
+
+  onInput = (event: Event) => {
+    const val = (event.target as HTMLInputElement).value;
+    this.value.emit(val);
+    
+  }
   // isTextarea = computed(() => this.inputType() === 'textarea');
+
+  constructor() {
+    effect(() => {
+      if (this.isFormCleared()) {
+        this.inputRef()!.nativeElement.value = '';
+      }
+    });
+  }
+
+  
+
 }

@@ -1,14 +1,26 @@
 <app-card-wrapper>
     <section>
         <div>
-            <h3>Welcome to Todo App</h3>
+            <h3
+            [class.strike-through]="isCompleted()"
+            >
+                {{title()}}
+            </h3>
+            <p class="description"
+            [class.strike-through]="isCompleted()"
+            >
+                {{description()}}
+            </p>
             <div class="time">
                 <app-icon iconName="time" />
-                <p>1 hour ago</p>
+                <p>{{timestamp() | timeAgo}}</p>
             </div>
-            <p class="description">This is your first task. you can add tasks search through them and delete campleted ones</p>
         </div>
-        <app-icon iconName="delete" 
-        [isClickable]="true"></app-icon>
+        <!-- <app-icon iconName="delete" 
+        [isClickable]="true"></app-icon> -->
+        <input 
+        type="checkbox"
+        (change)="onCheck($event)"
+        >
     </section>
 </app-card-wrapper>
