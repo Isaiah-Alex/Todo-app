@@ -15,7 +15,7 @@ export class TodoService {
 
     sortedTodos = computed(() => {
         return this.filterTodos().slice().sort((a, b) => {
-            return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+            return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
         });
     });
 

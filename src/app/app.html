@@ -23,7 +23,7 @@
         }
 
 
-        @for (todo of filteredTodos(); track todo.id) {
+        @for (todo of sortedTodo(); track todo.id) {
             <app-task
             [title]="todo.title"
             [description]="todo.description"
