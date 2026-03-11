@@ -13,7 +13,7 @@ import { Icon } from './component/icon/icon';
   imports: [Hero,
     AddTaskCard,
     CardWrapper,
-    SearchInput,
+    SearchInput, 
     Task,
     Icon,
     ],  
@@ -21,26 +21,17 @@ import { Icon } from './component/icon/icon';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('todo-app');
-  isDark = signal<boolean>(localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : true);
-
-  constructor() {
-  document.body.setAttribute('data-theme', this.isDark() ? 'dark' : 'light');
-}
-
-
-  changeTheme() {
-  this.isDark.set(!this.isDark());
-  const theme = this.isDark() ? 'dark' : 'light'; // was 'light' : 'light'
-  document.body.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
-}
-
-
   private todoService = inject(TodoService);
   todos = this.todoService.todos;
   filteredTodos = this.todoService.filterTodos;
   sortedTodo = this.todoService.sortedTodos;
+  protected readonly title = signal('todo-app');
+
+  isDark = this.todoService.isDark;
+
+  changeTheme = this.todoService.changeTheme;
+
+
   
 
 }

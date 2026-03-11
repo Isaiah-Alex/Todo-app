@@ -46,19 +46,20 @@ section {
             // background-color: red;
             width: fit-content;
 
-            &::after {
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    top: 50%;
-                    width: 0; // starts with no line
-                    height: 1px;
-                    background: var(--color-text-secondary);
-                    transition: width 0.3s ease;
-                }
-            &.strike-through::after {
-                    width: 100%;
-                    padding-left: 6px;
+            // &::after {
+            //         content: '';
+            //         position: absolute;
+            //         left: 0;
+            //         top: 50%;
+            //         width: 0; 
+            //         height: 1px;
+            //         background: var(--color-text-secondary);
+            //         transition: width 0.3s ease;
+            //     }
+            &.strike-through {
+                    // width: 100%;
+                    text-decoration: line-through;
+                    // padding-left: 6px;
                 }
             }
 
@@ -77,20 +78,20 @@ section {
             position: relative;
             width: fit-content;
 
-                &::after {
-                        content: '';
-                        position: absolute;
-                        left: 0;
-                        top: 50%;
-                        width: 0; // starts with no line
-                        height: 1px;
-                        background: var(--color-text-secondary);
-                        transition: width 0.3s ease;
-                    }
+                // &::before {
+                //         content: '';
+                //         position: absolute;
+                //         left: 0;
+                //         top: 50%;
+                //         width: 0;
+                //         height: 1px;
+                //         background: var(--color-text-secondary);
+                //         transition: width 0.3s ease;
+                //     }
                 
-                    &.strike-through::after {
-                        width: 100%;
-                        // padding-left: 6px;
+                    &.strike-through {
+                        // width: 100%;
+                        text-decoration: line-through;
                     }
         }
     }
@@ -125,9 +126,7 @@ section {
         }
     }
     .strike-through {
-        // text-decoration: line-through !important;
         color: var(--color-text-secondary) !important;
-        // transition: all 0.3s ease-in-out;
     }
 
     

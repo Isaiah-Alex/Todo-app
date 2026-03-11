@@ -1,10 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { InputTask } from '../input-task/input-task';
 import { Btn } from '../btn/btn';
 import { MOCK_TODOS } from '../../constants/mock-data';
 import { Itodo } from '../../types/todo.types';
 import { TodoService } from '../../services/todo.service';
-// import { CardWrapper } from '../card-wrapper/card-wrapper';
 
 @Component({
   selector: 'app-add-task-card',
@@ -14,12 +13,17 @@ import { TodoService } from '../../services/todo.service';
 })
 export class AddTaskCard {
   private todoService = inject(TodoService);
+  isDark = this.todoService.isDark;
 
-  // todos = signal(MOCK_TODOS);
   taskTitle = signal<string>('');
   taskDescription = signal<string>('');
   displayText = signal<boolean>(false);
   clearForm = signal<boolean>(false);
+
+  constructor() {
+    const theme = localStorage.getItem('theme');
+    console.log(theme);
+  } 
 
   addTask (event: Event) {
     event.preventDefault();

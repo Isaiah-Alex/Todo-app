@@ -1,13 +1,16 @@
 input {
     display: block;
-    width: 100%;
+    width: 110%;
     border: none;
     border-radius: 6px;
     background-color: var(--color-bg-input);
     padding: 8px;
     margin-top: 4px;
+    margin-left: -5%;
     color: var(--color-text-primary);
     outline: 2px solid var(--color-bg-input);
+    font-size: 16px;
+    transform: scale(0.9);
 
     &:focus{
         transition: outline 0.3s ease-in-out;

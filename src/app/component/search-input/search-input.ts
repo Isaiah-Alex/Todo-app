@@ -15,7 +15,7 @@ export class SearchInput {
   onSearch(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.todoService.searchQuery.set(value);
-    console.log(this.todoService.searchQuery())
+    // console.log(this.todoService.searchQuery())
   }
 
 }

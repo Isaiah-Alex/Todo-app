@@ -18,6 +18,7 @@ export class InputTask {
 
 
   onInput = (event: Event) => {
+    event.preventDefault()
     const val = (event.target as HTMLInputElement).value;
     this.value.emit(val);
     

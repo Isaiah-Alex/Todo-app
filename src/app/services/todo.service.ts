@@ -5,12 +5,21 @@ const STORAGE_KEY = 'todos';
 
 @Injectable({ providedIn: 'root' })
 export class TodoService {
+    constructor() {
+        document.body.setAttribute('data-theme', this.isDark() ? 'dark' : 'light');
+    }
+
     todos = signal<Itodo[]>(this.loadFromStorage());
 
     searchQuery = signal<string>('')
 
     filterTodos = computed(() => {
-        return this.todos().filter(todo => todo.title.toLowerCase().includes(this.searchQuery().toLowerCase()));
+        return this.todos()
+            .filter(todo =>
+                todo.title.toLowerCase().includes(this.searchQuery().toLowerCase()) ||
+                todo.description?.toLocaleLowerCase().includes(this.searchQuery().toLowerCase())
+            
+            );
     })
 
     sortedTodos = computed(() => {
@@ -56,4 +65,14 @@ export class TodoService {
     private saveToStorage() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos()));
     }
+
+    isDark = signal<boolean>(localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : true);
+
+    changeTheme() {
+        this.isDark.set(!this.isDark());
+        const theme = this.isDark() ? 'dark' : 'light';
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        }
+    
 }

@@ -20,5 +20,8 @@
         [isFormCleared]="clearForm()"
         />
     </div>
-    <app-btn icon="add" label="Add Task" (click)="addTask($event)"/>
+    <app-btn
+    [icon]="isDark() ? 'add-dark' : 'add' "
+    label="Add Task"
+    (click)="addTask($event)"/>
 </form>

@@ -43,7 +43,7 @@ body {
     @include createTheme($themes);
     background: var(--color-bg-main);
     color: var(--color-text-primary);
-    height: 100vh;
+    // height: 100vh;
     font-family: "Inter", sans-serif;
     transition: all 0.3s ease-in-out;
 }
