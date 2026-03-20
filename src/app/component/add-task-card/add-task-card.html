@@ -7,6 +7,7 @@
         placeholder="Enter task name..."
         (value)="taskTitle.set($event)"
         [isFormCleared]="clearForm()"
+        [inValue]="taskTitle()"
         />
         <span [class.red-style] = "displayText()">Please enter task name</span>
     </div>
@@ -18,10 +19,11 @@
         placeholder="Enter task description..."
         (value)="taskDescription.set($event)"
         [isFormCleared]="clearForm()"
+        [inValue]="taskDescription()"
         />
     </div>
     <app-btn
-    [icon]="isDark() ? 'add-dark' : 'add' "
-    label="Add Task"
+    [icon]="isEditTask() ? '': isDark() ? 'add-dark' : 'add'"
+    [label]="isEditTask() ? 'Edit Task' : 'Add Task' "
     (click)="addTask($event)"/>
 </form>

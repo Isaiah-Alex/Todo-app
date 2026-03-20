@@ -3,8 +3,11 @@
         <span 
         class="menutab" 
         [class.toggle] = "isMenuDisplayed()"
-        (click) = "deleteTask($event)"
-        >Delete</span>
+        ><ul>
+            <li (click) = "deleteTask($event)">Delete</li>
+            <hr>
+            <li (click)="editTask($event)">Edit</li>
+        </ul></span>
         <div>
             <h3 [class.strike-through]="isCompleted()">
                 {{title()}}

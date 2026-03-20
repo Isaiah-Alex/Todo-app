@@ -6,11 +6,11 @@ img {
 .clickable-style {
     padding: 5px;
     cursor: pointer;
-    height: 35px;
+    height: auto;
     width: 35px;
     border-radius: 50%;
     background: var(--color-text-primary);
-    margin-top: 10px;
+    // margin-top: 10px;
     transition: all 0.3s ease-in-out;
 
     &:hover {

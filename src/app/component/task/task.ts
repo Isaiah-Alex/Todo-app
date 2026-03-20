@@ -11,13 +11,12 @@ import { TimeAgoPipe } from '../../utils/time-ago';
   styleUrl: './task.scss',
 })
 export class Task {
-
   private todoService = inject(TodoService);
 
   title = input.required<string>();
   description = input<string>();
   isCompleted = input<boolean>(false);
-  timestamp = input<Date>(new Date);
+  timestamp = input<Date>(new Date());
   id = input.required<number>();
   isMenuDisplayed = signal<boolean>(false);
 
@@ -25,26 +24,29 @@ export class Task {
     // const checked = (event.target as HTMLInputElement).checked;
     event.preventDefault();
     this.todoService.toggle(this.id());
-  }
+  };
 
   onRightCLick(event: MouseEvent) {
     event.preventDefault();
-    console.log('clicked me')
+    console.log('clicked me');
   }
 
   onClick(event: MouseEvent) {
     event.stopPropagation();
-    this.isMenuDisplayed.update(val => !val);
-    // console.log('clicked')
+    this.isMenuDisplayed.update((val) => !val);
   }
 
   closeTab(event: MouseEvent) {
     if (this.isMenuDisplayed()) {
-      this.isMenuDisplayed.set(false)
+      this.isMenuDisplayed.set(false);
     }
   }
   deleteTask(event: MouseEvent) {
-    this.todoService.deleteTodo(this.id())
+    this.todoService.deleteTodo(this.id());
   }
 
+  editTask(event: MouseEvent) {
+    this.todoService.getTodoObject(this.id());
+    this.todoService.notifyPaste();
+  }
 }

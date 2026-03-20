@@ -17,13 +17,33 @@ section {
         color: var(--color-danger);
         border: 2px solid var(--color-border);
         border-radius: 4px;
-        padding: 3px 6px;
         background-color: var(--color-bg-card);
         top: 30px;
         right: -40px;
         z-index: 9;
         cursor: pointer;
         display: none;
+        
+        hr {
+            border: 0.5px solid var(--color-text-secondary);
+            margin: 0 4px;
+        }
+
+        li {
+            margin-top: 2px;
+            // border-top: 2px solid var(--color-text-secondary);
+            list-style: none;
+            width: 100%;
+            padding: 6px 16px;
+
+            &:nth-last-child(1){
+                color: var(--color-text-primary);
+            }
+
+            &:hover {
+                background-color: var(--color-bg-input);
+            }
+        }
     }
 
     .toggle {
