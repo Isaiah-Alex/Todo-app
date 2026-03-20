@@ -48,5 +48,9 @@ export class Task {
   editTask(event: MouseEvent) {
     this.todoService.getTodoObject(this.id());
     this.todoService.notifyPaste();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }
 }
