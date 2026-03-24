@@ -1,37 +1,43 @@
 <app-hero/>
+<app-icon
+    [iconName]="isDark() ? 'light' : 'moon' "
+    [isClickable]="true"
+    class="icon"
+    (click) = "changeTheme()"
+    />
 <main>
-    <app-icon
-        [iconName]="isDark() ? 'light' : 'moon' "
-        [isClickable]="true"
-        class="icon"
-        (click) = "changeTheme()"
-        />
-
-
-    <app-card-wrapper>
-        <app-add-task-card />
-    </app-card-wrapper>
-    <app-search-input />
-    <section class="tasks">
-
-        @if (sortedTodo().length === 1) {
-            <p>1 task</p>
-        } @else if (sortedTodo().length > 1 ) {
-            <p>{{sortedTodo().length }} tasks found</p>
-        } @else {
-            <p class="last-task-title">No task found</p>
-        }
-
-
-        @for (todo of sortedTodo(); track todo.id) {
-            <app-task
-            [title]="todo.title"
-            [description]="todo.description"
-            [id]="todo.id"
-            [isCompleted]="todo.isCompleted"
-            [timestamp]="todo.timestamp"
-            /> 
-         }
+    <section class="add-task-container">
+        <app-card-wrapper>
+            <app-add-task-card />
+        </app-card-wrapper>
+    </section>
+    <section>
+        <div class="search-container">
+            <app-search-input />
+        </div>
+        <section>
+            <div class="number-of-task">
+                @if (sortedTodo().length === 1) {
+                    <p>1 task</p>
+                } @else if (sortedTodo().length > 1 ) {
+                    <p>{{sortedTodo().length }} tasks found</p>
+                } @else {
+                    <p class="last-task-title">No task found</p>
+                }
+            </div>
+    
+            <section class="task-container">
+                @for (todo of sortedTodo(); track todo.id) {
+                    <app-task
+                    [title]="todo.title"
+                    [description]="todo.description"
+                    [id]="todo.id"
+                    [isCompleted]="todo.isCompleted"
+                    [timestamp]="todo.timestamp"
+                    /> 
+                 }
+            </section>
+        </section>
     </section>
     
     <footer>Isaiah Alex world &copy; 2026</footer>

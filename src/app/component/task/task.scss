@@ -1,16 +1,21 @@
 :host {
     display: block;
+    width: 100%;
+    height: 100%;
 }
 
 section {
     display: flex;
     // margin: 15px 0px;
+    width: 100%;
+    height: 100%;
     text-align: left;
     color: var(--color-text-secondary);
     align-items: center;
     justify-content: space-between;
     position: relative;
     padding: 15px 0;
+    column-gap: 20px;
 
     .menutab {
         position: absolute;
@@ -150,4 +155,11 @@ section {
     }
 
     
+}
+
+@media (min-width: 530px) {
+    section {
+        width: 100%;
+        height: 100%;
+    }
 }
